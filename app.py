@@ -47,4 +47,4 @@ with st.sidebar:
     st.info("🖱️ **Vortex Control:** Hover to feel particle mass. Click the map to freeze/unfreeze flow. Red particles will continue to vibrate.")
 st.title("Dissonance Engine")
 st.markdown("<p style='color: #94a3b8; font-size: 1.1rem;'>Real-time fluid dynamic audit of global narrative logical structures.</p>", unsafe_allow_html=True)
-event=st.text_input(""Target Subject / Event", placeholder="Enter geopolitical event or global narrative to analyse...")
+event=st.text_input("Target Subject / Event", placeholder="Enter geopolitical event or global narrative to analyse...")

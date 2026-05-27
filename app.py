@@ -4,7 +4,7 @@ import google.generativeai as gem
 import json
 import re
 import streamlit.components.v1 as components
-st.set_page_config(layout="wide",page_title="Disonance Engine | Audit",initial_sidebar_state="expanded")
+st.set_page_config(layout="wide",page_title="Dissonance Engine",initial_sidebar_state="expanded")
 st.markdown("""
 <style>
     #MainMenu {visibility: hidden;}

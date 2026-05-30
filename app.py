@@ -69,9 +69,9 @@ def stabilize_vortex(raw_telemetry):
     return sanitized_payload+"".join(reversed(integrity_stack))
 def geminiapicall(reports6):
     gem.configure(api_key=AI_ENGINE_KEY)
-    model = gem.GenerativeModel('gemini-3.5-flash')
-    context = "\n".join([f"[{r['title']} | {r['url']}] - {r['content']}" for r in reports6])
-    prompt = f"""
+    model=gem.GenerativeModel('gemini-3.5-flash')
+    context="\n".join([f"[{r['title']} | {r['url']}] - {r['content']}" for r in reports6])
+    prompt=f"""
     [SYSTEM PROTOCOL: DISONANCE ENGINE]
     Analyze the text for logical consensus and dissonance. Perform a linguistic bias audit.
     
@@ -94,19 +94,18 @@ def geminiapicall(reports6):
     
     Context: {context}
     """
-    response = model.generate_content(prompt, generation_config={"response_mime_type": "application/json", "max_output_tokens": 8192, "temperature": 0.2})
-    generatedinf = response.text.strip()
-    json_match = re.search(r'(\{.*\})', generatedinf, re.DOTALL)
-    refi = json_match.group(1) if json_match else generatedinf
-    refi = "".join(char for char in refi if ord(char) >= 32 or char in "\n\r\t")
-    refi = re.sub(r'(?<!\\)\n', ' ', refi)
+    response=model.generate_content(prompt, generation_config={"response_mime_type": "application/json", "max_output_tokens": 8192, "temperature": 0.2})
+    generatedinf=response.text.strip()
+    json_match=re.search(r'(\{.*\})', generatedinf, re.DOTALL)
+    refi=json_match.group(1) if json_match else generatedinf
+    refi="".join(char for char in refi if ord(char) >= 32 or char in "\n\r\t")
+    refi=re.sub(r'(?<!\\)\n', ' ',refi)
     try:
-        data = json.loads(refinedver, strict=False)
+        data=json.loads(refinedver, strict=False)
     except json.JSONDecodeError:
         try:
-            data = json.loads(stabilise_vortex(refi), strict=False)
+            data=json.loads(stabilise_vortex(refi), strict=False)
         except Exception:
-            # Fallback placeholder to prevent app crash
-            data = {"particles": [], "summary": {"common_claims": [], "contradictions": [{"title": "Data Parse Error", "detail": "AI output structure failed."}]}}
+            data={"particles": [], "summary": {"common_claims": [], "contradictions": [{"title": "Data Parse Error", "detail": "AI output structure failed."}]}}
     
     return data

@@ -47,21 +47,27 @@ with st.sidebar:
 st.title("Dissonance Engine")
 st.markdown("<p style='color: #94a3b8; font-size: 1.1rem;'>Real-time fluid dynamic audit of global narrative logical structures.</p>", unsafe_allow_html=True)
 event=st.text_input("Target Subject / Event", placeholder="Enter geopolitical event or global narrative to analyse...")
+def calltavilyapi(query):
+    tavilycur=TavilyClient(api_key=TAVILY_API_KEY)
+    response=tavilycur.search(query=query, search_depth="advanced", max_results=6)
+    if not response.get('results'):
+        raise ValueError("No verified news sources found.")
+    return response['results']
 def stabilize_vortex(raw_telemetry):
-    sanitized_payload = raw_telemetry.strip()
-    sanitized_payload = re.sub(r'[^}\]" \w]$', '', sanitized_payload)
-    if sanitized_payload.count('"') % 2 != 0: 
-        sanitized_payload += '"'
-    integrity_stack = []
+    sanitized_payload=raw_telemetry.strip()
+    sanitized_payload=re.sub(r'[^}\]" \w]$', '',sanitized_payload)
+    if sanitized_payload.count('"')%2!=0: 
+        sanitized_payload+='"'
+    integrity_stack=[]
     for char in sanitized_payload:
-        if char == '{': 
+        if char=='{': 
             integrity_stack.append('}')
-        elif char == '[': 
+        elif char=='[': 
             integrity_stack.append(']')
         elif char in '}]':
-            if integrity_stack and integrity_stack[-1] == char: 
+            if integrity_stack and integrity_stack[-1]==char: 
                 integrity_stack.pop()
-    return sanitized_payload + "".join(reversed(integrity_stack))
+    return sanitized_payload+"".join(reversed(integrity_stack))
 def geminiapicall(reports6):
     gem.configure(api_key=AI_ENGINE_KEY)
     model = gem.GenerativeModel('gemini-3.5-flash')

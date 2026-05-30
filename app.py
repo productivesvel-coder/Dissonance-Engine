@@ -14,7 +14,6 @@ st.markdown("""
     .stTextInput input { border-radius: 8px; background-color: #0f172a; color: #f8fafc; border: 1px solid #334155; }
     .stButton>button {border-radius: 8px;background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);color: white; font-weight: 600; border: none; padding: 10px 24px; transition: 0.3s; width: 100%;}
     
-    /* Audit Card CSS for Distinct Sections */
     .audit-card {background-color: #0f172a;border-radius: 12px;padding: 20px;margin-bottom: 15px;border: 1px solid #1e293b;transition: border-color 0.2s ease;}
     .audit-card:hover { border-color: #3b82f6; }
     .card-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; }

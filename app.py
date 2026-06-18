@@ -300,7 +300,7 @@ def vortex(vortex_data):
     components.html(html_code,height=620)
 
 if st.button("Initialize Logic Audit"):
-    if not query.strip():
+    if not event.strip():
         st.warning("Query required.")
     else:
         status_container=st.empty()

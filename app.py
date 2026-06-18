@@ -307,7 +307,7 @@ if st.button("Initialize Logic Audit"):
         try:
             with status_container.status(" Deploying Dissonance Engine... ", expanded=True) as status:
                 st.write(" Scanning global intelligence sources... ")
-                info=calltavilyapi(query)
+                info=calltavilyapi(event)
                 
                 st.write(" Engine synthesising Pulse Vortex data... ")
                 payload=geminiapicall(info)

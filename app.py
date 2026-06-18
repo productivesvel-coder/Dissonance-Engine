@@ -101,7 +101,7 @@ def geminiapicall(reports6):
     refi="".join(char for char in refi if ord(char) >= 32 or char in "\n\r\t")
     refi=re.sub(r'(?<!\\)\n', ' ',refi)
     try:
-        data=json.loads(refinedver, strict=False)
+        data=json.loads(refi, strict=False)
     except json.JSONDecodeError:
         try:
             data=json.loads(stabilise_vortex(refi), strict=False)
@@ -299,9 +299,6 @@ def vortex(vortex_data):
     """
     components.html(html_code,height=620)
 
-st.title("Dissonance Engine")
-st.markdown("<p style='color: #94a3b8; font-size: 1.1rem;'>Real-time fluid dynamic audit of global narrative logical structures.</p>", unsafe_allow_html=True)
-query=st.text_input("Target Subject / Event", placeholder="Enter geopolitical event or global narrative to analyse...")
 if st.button("Initialize Logic Audit"):
     if not query.strip():
         st.warning("Query required.")

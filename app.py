@@ -112,11 +112,9 @@ def geminiapicall(reports6):
 def vortex(vortex_data):
     particles=vortex_data.get("particles", [])
     vortex_json=json.dumps(particles)
-    
     # calculating Dissonance Ratio(0.0 to 1.0) for colour of the particle which would be green/red
     contra_count=sum(1 for p in particles if p.get('type') == 'contradiction')
     ratio=contra_count / len(particles) if particles else 0.0
-    
     html_code=f"""
     <div id="graph-wrapper" style="position: relative; border-radius: 12px; background: #05080F; overflow: hidden; height: 600px; border: 1px solid #1e293b;">
         <div id="info-panel" style="position: absolute; top: 15px; right: 15px; width: 320px; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); color: white; padding: 20px; border-radius: 12px; display: none; border: 1px solid #334155; z-index: 100; font-family: 'Inter', sans-serif;">
@@ -298,7 +296,6 @@ def vortex(vortex_data):
     </script>
     """
     components.html(html_code,height=620)
-
 if st.button("Initialize Logic Audit"):
     if not event.strip():
         st.warning("Query required.")
@@ -320,7 +317,6 @@ if st.button("Initialize Logic Audit"):
             st.subheader("Narrative Pulse Vortex")
             st.info("🖱️ **Interaction:** Hover over particles for haptic response. Click the map to **Freeze** orbital flow. Click particles to view intelligence metadata.")
             vortex(payload)
-            
             st.markdown("<br><hr>", unsafe_allow_html=True)
             col1, col2=st.columns(2)
             with col1:

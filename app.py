@@ -69,7 +69,7 @@ def stabilize_vortex(raw_telemetry):
     return sanitized_payload+"".join(reversed(integrity_stack))
 def geminiapicall(reports6):
     gem.configure(api_key=AI_ENGINE_KEY)
-    model=gem.GenerativeModel('gemini-3.5-flash-lite')
+    model=gem.GenerativeModel('gemini-3-flash-preview')
     context="\n".join([f"[{r['title']} | {r['url']}] - {r['content']}" for r in reports6])
     prompt=f"""
     [SYSTEM PROTOCOL: DISONANCE ENGINE]

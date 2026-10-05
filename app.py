@@ -22,8 +22,8 @@ with st.sidebar:
     st.write("🟢 **Render Engine:** WebGL Adaptive Chroma")
     st.markdown("---")
     st.caption("Vortex Legend:")
-    st.markdown("● CONTRADICTION (Turbulence)", unsafe_allow_html=True)
-    st.markdown("● CONSENSUS (Smooth Flow)", unsafe_allow_html=True)
+    st.markdown("🔴 CONTRADICTION (Turbulence)", unsafe_allow_html=True)
+    st.markdown("🟢 CONSENSUS (Smooth Flow)", unsafe_allow_html=True)
     st.markdown("---")
     st.info(
         "🖱️ **Vortex Control:** Hover to feel particle mass. "

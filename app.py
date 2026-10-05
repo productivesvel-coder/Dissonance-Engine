@@ -13,7 +13,7 @@ st.set_page_config(
 
 TAVILY_API_KEY = st.secrets["TAVILY_API_KEY"]
 AI_ENGINE_KEY = st.secrets["AI_ENGINE_KEY"]
-GEMINI_MODEL = st.secrets.get("GEMINI_MODEL", "gemini-3.6-flash")
+GEMINI_MODEL = st.secrets.get("GEMINI_MODEL", "gemini-3.5-flash")
 
 with st.sidebar:
     st.markdown("### System Telemetry\n---")

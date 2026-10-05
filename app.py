@@ -408,4 +408,3 @@ if (
             )
 
             st.write(item["content"])
-```
